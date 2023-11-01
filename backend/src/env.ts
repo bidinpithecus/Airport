@@ -11,6 +11,7 @@ function getEnv(envVar: string): string {
 }
 
 export const env = {
+	dbDriver: getEnv('DATABASE_DRIVER'),
 	dbUser: getEnv('DATABASE_USER'),
 	dbPassword: getEnv('DATABASE_PASSWORD'),
 	dbHost: getEnv('DATABASE_HOST'),

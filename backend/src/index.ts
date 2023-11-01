@@ -10,6 +10,14 @@ const db = new PostgresService({
 	database: env.dbName
 });
 
+// const db = new MongoService({
+// 	serverApi: {
+// 		version: ServerApiVersion.v1,
+// 		strict: true,
+// 		deprecationErrors: true
+// 	},
+// });
+
 app.get('/api', async (_req, res) => {
 	try {
 		const airplaneModels = await db.readAirplaneModels();
@@ -38,6 +46,6 @@ app.get('/api/airplane', async (_req, res) => {
 });
 
 process.on('exit', () => {
-	db.close();
 	server.close();
+	db.close();
 });

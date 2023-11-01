@@ -6,19 +6,19 @@ import Postgrator from 'postgrator';
 import path from 'path';
 
 class PostgresService implements DatabaseService {
-	private pool: Pool;
+	private client: Pool;
 	private migrator: Postgrator;
 
 	constructor(poolConfig: PoolConfig) {
-		this.pool = new Pool(poolConfig);
+		this.client = new Pool(poolConfig);
 		this.connect();
 
 		this.migrator = new Postgrator({
 			driver: 'pg',
-			migrationPattern: path.resolve(__dirname, './db_scripts/*'),
+			migrationPattern: path.resolve(__dirname, './aa/*'),
 			database: poolConfig.database,
 			currentSchema: 'public',
-			execQuery: (query) => this.pool.query(query)
+			execQuery: (query) => this.client.query(query)
 		});
 
 		this.migrate();
@@ -34,7 +34,7 @@ class PostgresService implements DatabaseService {
 		const values = [capacity, weight, code];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error creating airplane model:', error);
 			throw error;
@@ -47,7 +47,7 @@ class PostgresService implements DatabaseService {
 		const values = [modelId];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error creating airplane:', error);
 			throw error;
@@ -59,7 +59,7 @@ class PostgresService implements DatabaseService {
 		const values = [id];
 
 		try {
-			const result = await this.pool.query(query, values);
+			const result = await this.client.query(query, values);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -76,13 +76,9 @@ class PostgresService implements DatabaseService {
 		const query = 'SELECT * FROM "airplane_model"';
 
 		try {
-			const result = await this.pool.query(query);
+			const result = await this.client.query(query);
 
-			if (result.rows.length === 0) {
-				return null;
-			}
-
-			return result.rows;
+			return result.rows.length === 0 ? null : result.rows;
 		} catch (error) {
 			console.error('Error reading airplane:', error);
 			throw error;
@@ -94,7 +90,7 @@ class PostgresService implements DatabaseService {
 		const values = [code];
 
 		try {
-			const result = await this.pool.query(query, values);
+			const result = await this.client.query(query, values);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -112,7 +108,7 @@ class PostgresService implements DatabaseService {
 		const values = [capacity];
 
 		try {
-			const result = await this.pool.query(query, values);
+			const result = await this.client.query(query, values);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -130,7 +126,7 @@ class PostgresService implements DatabaseService {
 		const values = [weight];
 
 		try {
-			const result = await this.pool.query(query, values);
+			const result = await this.client.query(query, values);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -147,7 +143,7 @@ class PostgresService implements DatabaseService {
 		const query = 'SELECT * FROM "airplane"';
 
 		try {
-			const result = await this.pool.query(query);
+			const result = await this.client.query(query);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -165,7 +161,7 @@ class PostgresService implements DatabaseService {
 		const values = [id];
 
 		try {
-			const result = await this.pool.query(query, values);
+			const result = await this.client.query(query, values);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -183,7 +179,7 @@ class PostgresService implements DatabaseService {
 		const values = [modelId];
 
 		try {
-			const result = await this.pool.query(query, values);
+			const result = await this.client.query(query, values);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -200,7 +196,7 @@ class PostgresService implements DatabaseService {
 		const query = 'SELECT * FROM "employee"';
 
 		try {
-			const result = await this.pool.query(query);
+			const result = await this.client.query(query);
 
 			if (result.rows.length === 0) {
 				return null;
@@ -218,7 +214,7 @@ class PostgresService implements DatabaseService {
 		const values = [newCapacity, newWeight, id];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error updating airplane model by ID:', error);
 			throw error;
@@ -230,7 +226,7 @@ class PostgresService implements DatabaseService {
 		const values = [newCapacity, newWeight, code];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error updating airplane model by code:', error);
 			throw error;
@@ -242,7 +238,7 @@ class PostgresService implements DatabaseService {
 		const values = [newModelId, id];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error updating airplane by ID:', error);
 			throw error;
@@ -254,7 +250,7 @@ class PostgresService implements DatabaseService {
 		const values = [newModelId, modelId];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error updating airplanes by model ID:', error);
 			throw error;
@@ -266,7 +262,7 @@ class PostgresService implements DatabaseService {
 		const values = [id];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error deleting airplane model by ID:', error);
 			throw error;
@@ -278,7 +274,7 @@ class PostgresService implements DatabaseService {
 		const values = [code];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error deleting airplane model by code:', error);
 			throw error;
@@ -290,7 +286,7 @@ class PostgresService implements DatabaseService {
 		const values = [id];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error deleting airplane by ID:', error);
 			throw error;
@@ -302,7 +298,7 @@ class PostgresService implements DatabaseService {
 		const values = [modelId];
 
 		try {
-			await this.pool.query(query, values);
+			await this.client.query(query, values);
 		} catch (error) {
 			console.error('Error deleting airplanes by model ID:', error);
 			throw error;
@@ -310,11 +306,11 @@ class PostgresService implements DatabaseService {
 	}
 
 	async connect(): Promise<void> {
-		await this.pool.connect();
+		await this.client.connect();
 	}
 
 	async close(): Promise<void> {
-		await this.pool.end();
+		await this.client.end();
 	}
 }
 
