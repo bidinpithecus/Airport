@@ -1,8 +1,8 @@
- {"_id" : "ac202123-e429-4c0c-83fe-444ed2aecb95", "capacity" : 100, "weight" : 37875, "code" : "Boeing-377", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
- {"_id" : "8361807c-6b7b-4c57-9b99-5b586609a65b", "capacity" : 134, "weight" : 45720, "code" : "Boeing-727", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
- {"_id" : "918eb809-afed-400e-9a0a-70ece9af342f", "capacity" : 467, "weight" : 220100, "code" : "Boeing-747", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
- {"_id" : "9e7a339d-22e3-4557-9091-582d0aa354c4", "capacity" : 160, "weight" : 37080, "code" : "Airbus-A220", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
- {"_id" : "aa66d16d-2fc4-4c3c-8850-3de0a2788537", "capacity" : 185, "weight" : 48500, "code" : "Airbus-A320", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
- {"_id" : "aedc2cc1-5242-4a0b-8088-7ab4755edf34", "capacity" : 575, "weight" : 285000, "code" : "Airbus-A380", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
- {"_id" : "7fde7194-b13f-4aec-a9da-a64f9ec5a291", "capacity" : 151, "weight" : 63278, "code" : "Vickers-VC10", "createdAt" : "2023-10-24T13:55:57.166668", "updatedAt" : "2023-10-24T13:55:57.166668"}
+ {"_id" : {"$oid" : "6557fe4a65ffe2006bf525d0" }, "capacity" : 100, "weight" : 37875, "code" : "Boeing-377", "image_path" : "Boeing-377.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4aae1487006b460c23" }, "capacity" : 134, "weight" : 45720, "code" : "Boeing-727", "image_path" : "Boeing-727.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4aa2ff6d006b228276" }, "capacity" : 467, "weight" : 220100, "code" : "Boeing-747", "image_path" : "Boeing-747.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4ad37731006b039062" }, "capacity" : 160, "weight" : 37080, "code" : "Airbus-A220", "image_path" : "Airbus-A220.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4ae386dd006bfa42b9" }, "capacity" : 185, "weight" : 48500, "code" : "Airbus-A320", "image_path" : "Airbus-A320.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4a99194b006ba4fd34" }, "capacity" : 575, "weight" : 285000, "code" : "Airbus-A380", "image_path" : "Airbus-A380.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4a730420006b0cba2b" }, "capacity" : 151, "weight" : 63278, "code" : "Vickers-VC10", "image_path" : "Vickers-VC10.png", "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
 

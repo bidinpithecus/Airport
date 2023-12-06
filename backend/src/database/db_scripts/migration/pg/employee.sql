@@ -1,1 +1,1 @@
-SELECT (json_build_object('_id', id, 'name', name, 'house_location_id', house_location_id, 'phone_number', phone_number, 'salary', salary, 'syndicate_id', syndicate_id, 'createdAt', created_at, 'updatedAt', updated_at)) AS employee FROM employee;
+SELECT (json_build_object('_id',id,'name',name,'house_location_id',house_location_id,'phone_number',phone_number,'salary',salary,'syndicate_id',syndicate_id,'created_at',created_at,'updated_at',updated_at)) AS employee FROM employee;

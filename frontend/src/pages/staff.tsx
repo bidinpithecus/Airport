@@ -19,16 +19,16 @@ export function Staff() {
 	}, []);
 
 	return (
-	  <div>
-		<h1>Staff page</h1>
-		{error ? (
-		  <div>Error: {error}</div>
-		) : (
-		  <div>
-			<h2>Data from API:</h2>
-			<pre>{JSON.stringify(apiData, null, 2)}</pre>
-		  </div>
-		)}
-	  </div>
+		<div>
+			<h1>Staff page</h1>
+			{error ? (
+			<div>Error: {error}</div>
+			) : (
+			<div>
+				<h2>Data from API:</h2>
+				<pre>{JSON.stringify(apiData, null, 2)}</pre>
+			</div>
+			)}
+		</div>
 	);
 }

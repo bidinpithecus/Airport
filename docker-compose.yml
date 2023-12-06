@@ -12,32 +12,30 @@ services:
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
-  # mongodb:
-  #   image: mongo:latest
-  #   volumes:
-  #     - ./backend/src/database/db_scripts/migration:/usr/app/migration
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   image: airport-backend
   #   ports:
-  #     - "27017:27017"
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./backend/src:/usr/src/app/src
+  #   depends_on:
+  #     - postgresdb
+  #     # - mongodb
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    image: airport-backend
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./backend/src:/usr/src/app/src
-    depends_on:
-      - postgresdb
-      # - mongodb
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    image: airport-frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   image: airport-frontend
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - backend

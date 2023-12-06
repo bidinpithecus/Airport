@@ -1,0 +1,1 @@
+SELECT (json_build_object('_id',id,'score',score,'start_date',start_date,'finish_date',finish_date,'airplane_id',airplane_id,'integrity_test_id',integrity_test_id,'technician_id',technician_id,'created_at',created_at,'updated_at',updated_at)) AS test_made FROM test_made;

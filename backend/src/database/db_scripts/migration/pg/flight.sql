@@ -1,0 +1,1 @@
+SELECT (json_build_object('_id',id,'airplane_id',airplane_id,'pilot_id',pilot_id,'start_location_id',start_location_id,'destination_location_id',destination_location_id,'occupied_seats',occupied_seats,'created_at',created_at,'updated_at',updated_at)) AS flight FROM flight;

@@ -1,112 +1,163 @@
-import { UUID } from "crypto";
+import { ObjectId } from "mongodb";
 
 export type Syndicate = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
 	name: string;
 }
 
 export type AirplaneModel = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	capacity: bigint;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	capacity: number;
 	weight: number;
 	code: string;
+	image_path: string;
 }
 
 export type Airplane = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	modelId: UUID;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	model_id: ObjectId;
 }
 
 export type IntegrityTest = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	capacity: bigint;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
 	name: string;
-	minimumScore: bigint;
-	maximumScore: bigint;
+	minimum_score: number;
 }
 
 export type Location = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	countryAbbreviation: string;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	country_abbreviation: string;
 	country: string;
 	state: string;
 	city: string;
 	street: string;
-	number: bigint;
-	isAirport: string;
+	number: number;
+	is_airport: boolean;
 }
 
 export type Employee = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
 	name: string;
-	houseLocationId: string;
-	phoneNumber: string;
+	house_location_id: ObjectId;
+	phone_number: string;
 	salary: number;
-	syndicateId: UUID;
+	syndicate_id: ObjectId;
 }
 
 export type Technician = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	employeeId: UUID;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
 }
 
 export type TestMade = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	score: bigint;
-	startDate: Date;
-	finishDate: Date;
-	airplaneId: UUID;
-	integrityTestId: UUID;
-	technicianId: UUID;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	score: number;
+	start_date: Date;
+	finish_date: Date;
+	airplane_id: ObjectId;
+	integrity_test_id: ObjectId;
+	technician_id: ObjectId;
 }
 
 export type AirTrafficController = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	employeeId: UUID;
-	lastExamDate: Date;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	last_exam_date: Date;
 }
 
 export type TechnicianProAtModel = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	technicianId: UUID;
-	airplaneModelId: UUID;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	technician_id: ObjectId;
+	airplane_model_id: ObjectId;
 }
 
 export type Pilot = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	employeeId: UUID;
-	lastExamDate: Date;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	last_exam_date: Date;
 }
 
 export type Flight = {
-	id: UUID;
-	createdAt: Date;
-	updatedAt: Date;
-	airplaneId: UUID;
-	pilotId: UUID;
-	startLocationId: UUID;
-	destinationLocationId: UUID;
-	occupiedSeats: bigint;
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	airplane_id: ObjectId;
+	pilot_id: ObjectId;
+	start_location_id: ObjectId;
+	destination_location_id: ObjectId;
+	occupied_seats: number;
+}
+
+export type AirplaneModelWithTechsAndAirplanes = {
+	capacity: number;
+	weight: number;
+	code: string;
+	technician_pro_ids: ObjectId[];
+	airplane_ids: ObjectId[];
+}
+
+export type AirplaneFlightAndTests = {
+	airplane_id: ObjectId;
+	model_id: ObjectId;
+	flight_ids: ObjectId[];
+	test_ids: ObjectId[];
+}
+
+export type TechnicianInfoWithTestsAndModels = {
+	technician_id: ObjectId;
+	syndicate_id?: ObjectId;
+	tests_made_id?: ObjectId[];
+	models_pro_id?: ObjectId[];
+}
+
+export type CompleteTestMade = {
+	id: ObjectId;
+	obtained_score: number;
+	start_date: Date;
+	finish_date: Date;
+	airplane_id: ObjectId;
+	integrity_test_id: ObjectId;
+	technician_id: ObjectId;
+	test_name: string;
+	minimum_score: number;
+}
+
+export type CompleteFlight = {
+	id: ObjectId;
+	created_at: Date;
+	updated_at: Date;
+	airplane_id: ObjectId;
+	pilot_id: ObjectId;
+	start_location_id: ObjectId;
+	destination_location_id: ObjectId;
+	occupied_seats: number;
+
+	startLocation: Location;
+	destinationLocation: Location;
+
+	airplane_model_capacity: number;
+}
+
+export type AirplaneModelsAndEmployees = {
+	models: AirplaneModel[];
+	employees: Employee[];
 }

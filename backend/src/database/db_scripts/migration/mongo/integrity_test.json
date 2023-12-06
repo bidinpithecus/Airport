@@ -1,0 +1,5 @@
+ {"_id" : {"$oid" : "6557fe4a59651a006be07a6a" }, "name" : "Test A", "minimum_score" : 60, "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4ae2905c006b31cc36" }, "name" : "Test B", "minimum_score" : 70, "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4a6d54ce006b7793e7" }, "name" : "Test C", "minimum_score" : 75, "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+ {"_id" : {"$oid" : "6557fe4a44a8db006b2eda9e" }, "name" : "Test D", "minimum_score" : 50, "created_at" : "2023-11-17T23:59:06.372787", "updated_at" : "2023-11-17T23:59:06.372787"}
+

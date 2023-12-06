@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { api } from '../App'
+import { useParams } from 'react-router-dom';
+import SingleAirplane from '../components/single-airplane';
+import ManyAirplanes from '../components/many-airplanes';
+import { api } from '../App';
 
 export function Airplane() {
-	const [apiData, setApiData] = useState({});
+	const [apiData, setApiData] = useState(null);
 	const [error, setError] = useState(null);
+	const { id } = useParams();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await api.get('/airplane');
+				let response;
+				if (id) {
+					response = await api.get(`/completeAirplane/${id}`);
+				} else {
+					response = await api.get(`/completeAirplane`);
+				}
 				setApiData(response.data);
 			} catch (err: any) {
 				setError(err.message);
@@ -16,19 +25,31 @@ export function Airplane() {
 		};
 
 		fetchData();
-	}, []);
+	}, [id]);
+
+	if (!id) {
+		return (
+			<div>
+				{apiData ? (
+					<ManyAirplanes data={apiData} />
+				) : (
+					<div>Loading...</div>
+				)}
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>Error: {error}</div>;
+	}
 
 	return (
-	  <div>
-		<h1>Staff page</h1>
-		{error ? (
-		  <div>Error: {error}</div>
-		) : (
-		  <div>
-			<h2>Data from API:</h2>
-			<pre>{JSON.stringify(apiData, null, 2)}</pre>
-		  </div>
-		)}
-	  </div>
+		<div>
+			{apiData ? (
+				<SingleAirplane data={apiData} />
+			) : (
+				<div>Loading...</div>
+			)}
+		</div>
 	);
 }

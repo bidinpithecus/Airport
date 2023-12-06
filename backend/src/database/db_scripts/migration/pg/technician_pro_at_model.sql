@@ -1,0 +1,1 @@
+SELECT (json_build_object('_id',id,'technician_id',technician_id,'airplane_model_id',airplane_model_id,'created_at',created_at,'updated_at',updated_at)) AS technician_pro_at_model FROM technician_pro_at_model;
